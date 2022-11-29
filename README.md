@@ -5,11 +5,13 @@ base de datos MySQL, JPA Repository para persistir objetos y Spring Boot como fr
 desarrollo web.
 
 ## Entidades
+
 1. Entidad Noticia
 * La entidad Noticia modela las noticias que se publicarán en la web. En esta entidad, el atributo
 “título” contiene el nombre con el cuál vamos a encontrar la noticia, mientras que el atributo
 “cuerpo” contiene toda la información que queremos que el usuario pueda leer.
 * la entidad Noticia se va a relacionar con la entidad periodista
+
 
 2. Entidad Usuario
 * La entidad Usuario modela los usuarios que se registran y loguean en la web.
@@ -17,15 +19,18 @@ desarrollo web.
 panelAdmin.
 * Las entidades Periodista y Administrador deben extender de Usuario.
 
+
 3. Entidad Periodista
 * Un Periodista debe loguearse en el sistema para poder acceder a crear y modificar Noticias. Esta
 acción deberá realizarse desde la vista panelAdmin.
+
 
 4. Entidad Administrador
 * Podrá crear, modificar y eliminar noticias
 * Dar de alta o baja a Periodistas (modificar el atributo activo).
 * Indicar cuál va a ser el sueldoMensual de cada Periodista.
 Un Administrador debe loguearse en el sistema para poder acceder a sus funcionalidades.
+
 
 ## Capa de Vistas
 Esta capa tiene la responsabilidad de llevar adelante las funcionalidades necesarias para
