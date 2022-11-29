@@ -22,7 +22,6 @@ panelAdmin.
 acción deberá realizarse desde la vista panelAdmin.
 
 4. Entidad Administrador
-La entidad Administrador podrá:
 * Podrá crear, modificar y eliminar noticias
 * Dar de alta o baja a Periodistas (modificar el atributo activo).
 * Indicar cuál va a ser el sueldoMensual de cada Periodista.
