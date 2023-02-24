@@ -56,6 +56,16 @@ funcionalidades:
   * Thymeleaf
 
 
+## DEMO
+
+url: http://noticias-egg.us-east-2.elasticbeanstalk.com/login
+
+ADMIN->
+usuario: admin
+password: 123456
+
+
+
 
 
 
