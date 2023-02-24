@@ -61,8 +61,8 @@ funcionalidades:
 url: http://noticias-egg.us-east-2.elasticbeanstalk.com/login
 
 ADMIN->
-*usuario: admin
-*password: 123456
+* usuario: admin
+* password: 123456
 
 
 
