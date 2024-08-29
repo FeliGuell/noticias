@@ -1,6 +1,6 @@
 ## SITIO DE NOTICIAS EGG NEWS
 
-El objetivo de este ejercicio consiste en el desarrollo de un sistema web en Java utilizando una
+El objetivo de este proyecto consiste en el desarrollo de un sistema web en Java utilizando una
 base de datos MySQL, JPA Repository para persistir objetos y Spring Boot como framework de
 desarrollo web.
 
@@ -55,14 +55,6 @@ funcionalidades:
   * MySQL
   * Thymeleaf
 
-
-## DEMO
-
-url: http://noticias-egg.us-east-2.elasticbeanstalk.com/login
-
-ADMIN->
-* usuario: admin
-* password: 123456
 
 
 
