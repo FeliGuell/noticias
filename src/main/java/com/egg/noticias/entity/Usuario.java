@@ -2,9 +2,8 @@ package com.egg.noticias.entity;
 
 import com.egg.noticias.enumeraciones.Rol;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.jpa.repository.Modifying;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity

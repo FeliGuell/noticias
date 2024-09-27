@@ -7,12 +7,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/")
@@ -30,19 +27,20 @@ public class PortalController {
    @GetMapping("/registrar")
     public String registrar(Model model){
        model.addAttribute("tituloPagina", "Registrarse");
+       model.addAttribute("usuario", new Usuario());
        return "usuario_register.html";
    }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombreUsuario,@RequestParam String password, String password2, ModelMap modelMap) {
+    public String registro(@ModelAttribute Usuario usuario,@RequestParam String password2, ModelMap modelMap) {
         try{
-            usuarioService.crearUsuario(nombreUsuario, password, password2);
+            usuarioService.crearUsuario(usuario, password2);
             modelMap.put("exito", "Usuario registrado correctamente!");
-            return "inicio.html";
+            return "login.html";
         }catch (Exception ex){
 
             modelMap.put("error", ex.getMessage());
-            modelMap.put("nombre", nombreUsuario);
+            modelMap.put("nombre", usuario.getNombreUsuario());
 
             return "usuario_register.html";
         }

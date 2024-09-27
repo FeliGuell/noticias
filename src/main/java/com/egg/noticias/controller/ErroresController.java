@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class ErroresController implements ErrorController {
@@ -49,7 +49,7 @@ public class ErroresController implements ErrorController {
     }
 
     private int getErrorCode(HttpServletRequest httpRequest) {
-        return (Integer) httpRequest.getAttribute("javax.servlet.error.status_code");
+        return (Integer) httpRequest.getAttribute("jakarta.servlet.error.status_code");
     }
 
 

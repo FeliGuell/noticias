@@ -2,8 +2,8 @@ package com.egg.noticias.entity;
 
 import com.egg.noticias.enumeraciones.Rol;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 

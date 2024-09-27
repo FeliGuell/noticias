@@ -7,6 +7,7 @@ import com.egg.noticias.enumeraciones.Rol;
 import com.egg.noticias.exception.MessageException;
 import com.egg.noticias.repository.PeriodistaRepository;
 import com.egg.noticias.repository.UsuarioRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,9 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,26 +36,22 @@ public class UsuarioService implements UserDetailsService {
     private PeriodistaRepository periodistaRepository;
 
     @Transactional
-    public void crearUsuario(String nombreUsuario, String password, String password2) throws Exception{
+    public void crearUsuario(Usuario usuario, String password2) throws Exception{
 
-        validar(nombreUsuario,password, password2);
+        validar(usuario, password2);
 
-        Usuario usuario = new Usuario();
-
-        usuario.setNombreUsuario(nombreUsuario);
-        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+        usuario.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()));
         usuario.setFechaDeAlta(new Date());
         usuario.setRol(Rol.USUARIO);
         usuario.setActivo(Boolean.TRUE);
 
         usuarioRepository.save(usuario);
-
     }
 
     @Transactional
     public void actualizar(String idUsuario, String nombreUsuario, String password, String password2) throws Exception{
 
-        validar(nombreUsuario,password, password2);
+        /*validar(nombreUsuario,password, password2);*/
 
         Optional<Usuario> respuesta = getOne(idUsuario);
 
@@ -96,6 +91,7 @@ public class UsuarioService implements UserDetailsService {
         return noticias;
     }
 
+    /*
     @Transactional
     public void cambiarRol(String id) throws Exception{
         Optional<Usuario> respuesta = usuarioRepository.findById(id);
@@ -120,7 +116,7 @@ public class UsuarioService implements UserDetailsService {
             }
         }
     }
-
+     */
     @Transactional
     public void cambiarEstado(String id) throws Exception {
         Optional<Usuario> respuesta = usuarioRepository.findById(id);
@@ -145,17 +141,16 @@ public class UsuarioService implements UserDetailsService {
     }
 
 
-    private void validar(String nombreUsuario,String password, String password2) throws MessageException {
-        if(nombreUsuario.isEmpty() || nombreUsuario==null){
+    private void validar(Usuario usuario, String password2) throws MessageException {
+        if(usuario.getNombreUsuario().isBlank()){
             throw new MessageException("El nombre no puede ser nulo o estar vacío");
         }
-        if (password.isEmpty() || password == null || password.length() <= 5) {
+        if (usuario.getPassword().isBlank() || usuario.getPassword().length() <= 5) {
             throw new MessageException("La contraseña no puede estar vacía, y debe tener más de 5 dígitos");
         }
-        if (!password.equals(password2)) {
+        if (!usuario.getPassword().equals(password2)) {
             throw new MessageException("Las contraseñas ingresadas deben ser iguales");
         }
-
     }
 
     @Override

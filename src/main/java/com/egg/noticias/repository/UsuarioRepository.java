@@ -13,12 +13,13 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     @Query("SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombre")
     public Usuario buscarPorNombreUsuario(@Param("nombre")String nombre);
 
+    /*
     @Modifying
-    @Query("UPDATE Usuario u SET dtype = 'Periodista' WHERE u.id = :id")
+    @Query("UPDATE Usuario u SET u.dtype = 'Periodista' WHERE u.id = :id")
     public void updateDtypePeriodista(@Param("id") String id);
 
     @Modifying
-    @Query("UPDATE Usuario u SET dtype = 'Usuario' WHERE u.id = :id")
+    @Query("UPDATE Usuario u SET u.dtype = 'Usuario' WHERE u.id = :id")
     public void updateDtypeUsuario(@Param("id") String id);
-
+    */
 }

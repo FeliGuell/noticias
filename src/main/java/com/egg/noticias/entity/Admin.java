@@ -2,7 +2,7 @@ package com.egg.noticias.entity;
 
 import com.egg.noticias.enumeraciones.Rol;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import java.util.Date;
 
 @Entity
